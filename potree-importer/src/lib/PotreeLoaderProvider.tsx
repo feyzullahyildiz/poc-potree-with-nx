@@ -3,8 +3,12 @@ import { potreeImporter } from './potree-importer';
 
 interface Props {
   children: JSX.Element;
+  urlPrefix?: string;
 }
-export const PotreeLoaderProvider: React.FC<Props> = ({ children }) => {
+export const PotreeLoaderProvider: React.FC<Props> = ({
+  urlPrefix = '',
+  children,
+}) => {
   const [loaded, setLoaded] = useState(false);
   const isStartedRef = useRef(false);
   useEffect(() => {
@@ -13,7 +17,7 @@ export const PotreeLoaderProvider: React.FC<Props> = ({ children }) => {
     }
     isStartedRef.current = true;
     console.log('USE EFFECT');
-    potreeImporter().then(() => {
+    potreeImporter(urlPrefix).then(() => {
       setLoaded(true);
     });
   }, []);
