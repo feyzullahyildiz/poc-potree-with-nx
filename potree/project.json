@@ -1,0 +1,26 @@
+{
+  "name": "potree",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "potree/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/potree",
+        "main": "potree/src/index.ts",
+        "tsConfig": "potree/tsconfig.lib.json",
+        "assets": ["potree/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["potree/**/*.ts", "potree/package.json"]
+      }
+    }
+  },
+  "tags": []
+}

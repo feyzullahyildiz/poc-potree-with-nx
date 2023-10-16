@@ -16,6 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@react-monorepo/orders": ["libs/orders/src/index.ts"],
+      "@react-monorepo/potree": ["potree/src/index.ts"],
+      "@react-monorepo/potree-importer": ["potree-importer/src/index.ts"],
       "@react-monorepo/products": ["libs/products/src/index.ts"],
       "@react-monorepo/shared-ui": ["libs/shared/ui/src/index.ts"]
     }

@@ -1,0 +1,29 @@
+{
+  "name": "potree-importer",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "potree-importer/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/potree-importer",
+        "main": "potree-importer/src/index.ts",
+        "tsConfig": "potree-importer/tsconfig.lib.json",
+        "assets": ["potree-importer/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "potree-importer/**/*.ts",
+          "potree-importer/package.json"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
