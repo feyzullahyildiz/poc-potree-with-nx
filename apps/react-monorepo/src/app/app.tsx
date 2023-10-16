@@ -1,15 +1,29 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
+import { Route, Routes } from 'react-router-dom';
 
-import NxWelcome from './nx-welcome';
-import { Products } from '@react-monorepo/products';
+// importing the component from the library
+import { ProductList } from '@react-monorepo/products';
+import React from 'react';
+
+const LazySharedUi = React.lazy(() =>
+  import('@react-monorepo/shared-ui').then((a) => ({ default: a.SharedUi }))
+);
+function Home() {
+  return <h1>Home</h1>;
+}
 
 export function App() {
   return (
-    <div>
-      {/* <NxWelcome title="react-monorepo" /> */}
-      <Products />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />}></Route>
+      <Route
+        path="/products"
+        element={
+          <React.Suspense fallback="LOADING">
+            <LazySharedUi />
+          </React.Suspense>
+        }
+      ></Route>
+    </Routes>
   );
 }
 
